@@ -14,52 +14,23 @@
   <div id="app">
     <div class="nav-bar"></div>
 
-    <div class="cart">Cart ({{ cart }})</div>
+    <div class="cart">Cart ({{ cart.length }})</div>
+    <product-display 
+      :premium="premium" 
+      @add-to-cart="updateCart"
+      @remove-to-cart="removeToCart">
+    </product-display>
 
-    <div class="product-display">
 
-      <div class="product-container">
-        <div class="product-image">
-          <a :href="image">
-            <img :class="[ !inStock ?  'out-of-stock-img' : '' ]" :src="image" alt="sock-image" />
-          </a>
-        </div>
-        <div class="product-info">
-          <h1>{{ title }}</h1>
-          <p v-if="inStock > 10">In Stock</p>
-          <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
-          <p v-else>Out of Stock</p>
-
-          <p>Description</p>
-          <ul>
-            <li v-for="detail in details" :key="detail">{{ detail}}</li>
-          </ul>
-          <p>Variants</p>
-          <ul>
-            <li style="display:inline-block; margin-left: 1rem;" v-for="(variant,index) in variants" :key="variant.id"
-              @mouseover="updateVariant(index)">
-              <span>
-                <div class="color-circle" :style="{backgroundColor: variant.color}"></div>
-              </span>
-            </li>
-          </ul>
-          <p>Sizes</p>
-          <ul>
-            <li style="display:inline-block; margin-left: 1rem;" v-for="size in sizes" :key="size">{{ size}}</li>
-          </ul>
-          <button class="button" v-on:click="addToCart" :class="{disabledButton : !inStock }" :disabled="!inStock">Add
-            to
-            Cart</button>
-          <button class="button" v-on:click="removeToCart">Remove order</button>
-        </div>
-      </div>
-
-    </div>
-    <!-- End product-display -->
   </div>
 
   <!-- Import Js -->
   <script src="./main.js"></script>
+  <!-- Import Components -->
+  <script src="./components/ProductDisplay.js"></script>
+  <script src="./components/ProductDetails.js"></script>
+  <script src="./components/ReviewForm.js"></script>
+  <script src="./components/ReviewList.js"></script>
 
   <!-- Mount App -->
   <script>
