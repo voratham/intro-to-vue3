@@ -1,7 +1,12 @@
-# Intro to Vue3 Course
+# **Intro to Vue3 Course**
+
 Learn the fundamentals of Vue 3 in this course that starts with the very basics.
 
-- How to run you can open index.html or serve from npm package
+<img src="./example.png" width="300px" >
+<br/>
+<br/>
+
+### How to run you can open index.html or serve from npm package
 
 ```shell
 > serve .
